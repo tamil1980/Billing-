@@ -48,10 +48,6 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).json({ error: err.message || 'Server error' });
 });
 
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found' });
-});
-
 async function seed() {
   const adminExists = await User.exists({ email: 'admin@admin.in' });
   if (!adminExists) {
@@ -94,6 +90,10 @@ async function start() {
     });
     console.log('Serving built frontend from ../dist');
   }
+
+  app.use((req, res) => {
+    res.status(404).json({ error: 'Not found' });
+  });
 
   const port = process.env.PORT || 5000;
   app.listen(port, () => {
