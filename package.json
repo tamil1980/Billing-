@@ -1,0 +1,15 @@
+{
+  "name": "billing-software",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Billing Software - Full stack app (React + Express + MongoDB Atlas) for single-service Render deployment",
+  "main": "backend/server.js",
+  "scripts": {
+    "build": "cd frontend && npm ci && npm run build && cd .. && powershell -NoProfile -ExecutionPolicy Bypass -Command \"Copy-Item -Recurse -Force 'frontend/dist/*' 'dist' -ErrorAction SilentlyContinue; if (-not (Test-Path 'dist')) { New-Item -ItemType Directory -Path 'dist' | Out-Null }\"",
+    "start": "node backend/server.js",
+    "postinstall": "npm ci --prefix backend"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
