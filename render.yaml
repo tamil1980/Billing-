@@ -3,11 +3,11 @@ services:
     name: billing-software
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: npm install --include=dev && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_VERSION
-        value: 20.17.0
+        value: 22.14.0
       - key: MONGODB_URI
         sync: false
       - key: CORS_ORIGIN
