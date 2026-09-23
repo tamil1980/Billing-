@@ -1,0 +1,4 @@
+staticSites:
+  - name: billing-software
+    buildCommand: npm install && npm run build
+    publishDirectory: frontend/dist
